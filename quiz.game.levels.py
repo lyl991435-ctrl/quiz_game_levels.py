@@ -1,10 +1,5 @@
-
-
 # -*- coding: utf-8 -*-
 # لعبة أسئلة وأجوبة بمراحل للمراهقين - بالعربية
-
-# كل مرحلة عبارة عن قائمة أسئلة
-# كل سؤال: نص السؤال، الخيارات، الجواب الصحيح
 
 levels = {
     "سهل": [
@@ -53,7 +48,7 @@ levels = {
     ],
     "صعب": [
         {
-            "question": "في الفيزياء، ما هو الرمز الذي يعبّر عن تسارع الجاذبية الأرضية (تقريبًا)؟",
+            "question": "في الفيزياء، ما هو القيمة التقريبية لتسارع الجاذبية الأرضية؟",
             "options": ["أ) 6.8 m/s²", "ب) 8.9 m/s²", "ج) 9.8 m/s²", "د) 10.8 m/s²"],
             "answer": "ج"
         },
@@ -83,8 +78,6 @@ def ask_question(question_data):
         print(option)
 
     user_answer = input("اكتب حرف الإجابة (أ / ب / ج / د): ").strip().lower()
-
-    # توحيد الإجابات (مثلاً لو كتب 'ب' أو 'ب ' أو ' ب')
     correct_answer = question_data["answer"].strip().lower()
 
     if user_answer == correct_answer:
@@ -122,7 +115,6 @@ def main():
     total_score = 
     total_questions = 
 
-    # ترتيب المراحل
     ordered_levels = ["سهل", "متوسط", "صعب"]
 
     for level_name in ordered_levels:
@@ -132,16 +124,12 @@ def main():
         total_score += score
         total_questions += total
 
-        # شرط الإنتقال للمرحلة التالية:
-        # مثلاً: لازم يجيب نصف الأسئلة على الأقل
         if score < total // 2:
             print(f"\n❗ لم تحصل على عدد كافٍ من الإجابات الصحيحة للانتقال من مرحلة {level_name}.")
             print("جرّب اللعب مرة أخرى لتحسن نتيجتك. 🙂")
             break
         else:
             print(f"\n✅ أحسنت! يمكنك الانتقال من مرحلة {level_name} إلى المرحلة التالية!")
-
-            # لو هذه آخر مرحلة
             if level_name == ordered_levels[-1]:
                 print("\n🏁 لقد وصلت إلى نهاية جميع المراحل!")
 
@@ -153,14 +141,15 @@ def main():
         print(f"نسبة النجاح: {نسبة:.1f}%")
     print("#" * 40)
 
-    if total_score == total_questions and total_questions > :
-        print("🔥 أسطوري! جاوبت على كل الأسئلة بشكل صحيح!")
-    elif total_score >= total_questions * .6:
-        print("👏 أداء ممتاز، معلوماتك قوية!")
-    elif total_score >= total_questions * .4:
-        print("🙂 أداء مقبول، تحتاج شوية تطوير.")
-    else:
-        print("💡 لا بأس، اعتبرها بداية وطوّر نفسك أكثر.")
+    if total_questions > :
+        if total_score == total_questions:
+            print("🔥 أسطوري! جاوبت على كل الأسئلة بشكل صحيح!")
+        elif total_score >= total_questions * .6:
+            print("👏 أداء ممتاز، معلوماتك قوية!")
+        elif total_score >= total_questions * .4:
+            print("🙂 أداء مقبول، تحتاج شوية تطوير.")
+        else:
+            print("💡 لا بأس، اعتبرها بداية وطوّر نفسك أكثر.")
 
 
 if __name__ == "__main__":
